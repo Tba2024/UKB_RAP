@@ -7,7 +7,7 @@
 # Run this script using: sh 01-merge-files-dxfuse.sh on the command line
 
 # Inputs
-# - /Data/diabetes_wes_200k.phe - not strictly needed, but swiss-army-knife needs at least one input
+# - /Data/main_wes_450k.phe - not strictly needed, but swiss-army-knife needs at least one input
 
 # Outputs
 # - ukb22418_c1_22_v2_merged.bed - used as input for parts C and D
@@ -21,6 +21,6 @@ run_merge="cp /mnt/project/Bulk/Genotype\ Results/Genotype\ calls/ukb22418_c[1-9
         --autosome-xy --out ukb22418_c1_22_v2_merged;\
         rm files_to_merge.txt;"
 
-dx run swiss-army-knife -iin="/Data/diabetes_wes_200k.phe" \
+dx run swiss-army-knife -iin="/Data/main_wes_450k.phe" \
    -icmd="${run_merge}" --tag="Step1" --instance-type "mem1_ssd1_v2_x16"\
    --destination="/Data/" --brief --yes 
