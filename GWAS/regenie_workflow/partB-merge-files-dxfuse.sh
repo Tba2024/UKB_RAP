@@ -15,12 +15,13 @@
 # - ukb22418_c1_22_v2_merged.fam - used as input for parts C and D
 
 #cmd to run (use as input with `-icmd=$run_merge`)
-run_merge="cp /mnt/project/Bulk/Genotype\ Results/Genotype\ calls/ukb22418_c[1-9]* . ;\
-        ls *.bed | sed -e 's/.bed//g'> files_to_merge.txt; \
+run_merge="cp /mnt/project/Bulk/Genotype\ Results/Genotype\ calls/ukb22418_c[1-9].* /mnt/project/Bulk/Genotype\ Results/Genotype\ calls/ukb22418_c1[0-9].* /mnt/project/Bulk/Genotype\ Results/Genotype\ calls/ukb22418_c2[0-2].* . ;\
+        ls *.bed | sed -e 's/.bed//g' > files_to_merge.txt; \
         plink --merge-list files_to_merge.txt --make-bed\
-        --autosome-xy --out ukb22418_c1_22_v2_merged;\
+        --autosome-xy --out ukb22418_c1_22_v2_merged; \
         rm files_to_merge.txt;"
 
 dx run swiss-army-knife -iin="/Data/main_wes_450k.phe" \
    -icmd="${run_merge}" --tag="Step1" --instance-type "mem1_ssd1_v2_x16"\
-   --destination="/Data/" --brief --yes 
+   --destination="/Data/" --brief --yes
+
